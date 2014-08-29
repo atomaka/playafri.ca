@@ -7,20 +7,16 @@
       <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
-    <script src="assets/js/SeamlessLoop.js"></script>
+    <script src="assets/js/rainyday.js"></script>
   </head>
-  <body onloadi> https://github.com/maroslaw/rainyday.js/blob/master/demo2.html
+  <body onload="run()">
+  <body>
+    <audio autoplay="autoplay" loop="loop">
+      <source src="assets/audio/africa.ogg" />
+      <source src="assets/audio/africa.mp3" />
+    </audio>
+
     <img id="background" src="" />
-    <script>
-      var loop = new SeamlessLoop();
-
-      loop.addUri('assets/audio/africa.mp3', 5251, 'africa');
-
-      loop.callback(function() {
-        loop.start('africa');
-      });
-    </script>
-
     <script>
       function run() {
         var image = document.getElementById('background');
@@ -31,6 +27,7 @@
           engine.rain([ [3, 2, 2] ], 100);
         };
         image.src = 'assets/img/africa.png';
+        image.crossOrigin = 'anonymous';
       }
     </script>
   </body>
