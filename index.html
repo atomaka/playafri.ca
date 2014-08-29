@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Pussy Poppin</title>
+    <!--[if IE]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+    <script src="assets/js/SeamlessLoop.js"></script>
+  </head>
+  <body>
+
+    <script>
+      var loop = new SeamlessLoop();
+
+      loop.addUri('assets/audio/africa.mp3', 5251, 'africa');
+
+      loop.callback(function() {
+        loop.start('africa');
+      });
+    </script>
+  </body>
+</html>
+
