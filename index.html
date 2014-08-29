@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
     <script src="assets/js/SeamlessLoop.js"></script>
   </head>
-  <body>
-
+  <body onloadi> https://github.com/maroslaw/rainyday.js/blob/master/demo2.html
+    <img id="background" src="" />
     <script>
       var loop = new SeamlessLoop();
 
@@ -19,6 +19,19 @@
       loop.callback(function() {
         loop.start('africa');
       });
+    </script>
+
+    <script>
+      function run() {
+        var image = document.getElementById('background');
+        image.onload = function() {
+          var engine = new RainyDay({
+            image: this
+          });
+          engine.rain([ [3, 2, 2] ], 100);
+        };
+        image.src = 'assets/img/africa.png';
+      }
     </script>
   </body>
 </html>
