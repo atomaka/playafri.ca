@@ -16,6 +16,7 @@ html, body, img, #container {
 }
 
 #control {
+  visibility: hidden;
   display: inline-block;
   border-radius: 10px;
 
