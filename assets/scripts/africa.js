@@ -6,7 +6,7 @@ var sound      = new Howl({
   autoplay: true,
   loop: true,
   onload: function() {
-    setTimeout(makeItPlay, 5);
+    setTimeout(makeItPlay, 500);
   }
 });
 
