@@ -1,63 +1,42 @@
-$(document).ready(function() {
-  if(isMobile.any()) {
-    showButton("Play");
+var playing = false;
+var control = document.getElementById('control');
+var background = document.getElementById('background');
+
+var sound = new Howl({
+  urls: ['assets/audio/africa.ogg', 'assets/audio/africa.m4a'],
+  autoplay: true,
+  loop: true
+});
+
+function toggle() {
+  if(playing) {
+    sound.pause();
+    playing = false;
+    control.className = 'icon-play';
   } else {
-    showButton("None");
+    sound.play();
+    playing = true;
+    control.className = 'icon-pause';
   }
+}
 
-  var mediaPlayer = jQuery('#player');
+function load() {
+  makeItRain();
+  if(!isMobile.any()) {
+    playing = true;
+    control.style.visibility = 'hidden';
+  }
+}
 
-  mediaPlayer.jPlayer({
-    solution:    "html",
-    supplied : 'mp3, oga, m4a',
-    cssSelector: {
-      play: '#play',
-    },
-
-    ready: function() {jQuery(this).jPlayer("setMedia", {
-      mp3: 'assets/audio/africa.mp3',
-      oga: 'assets/audio/africa.oga',
-      m4a: 'assets/audio/africa.m4a'
-    }).jPlayer("play");},
-
-    loop: true
-  });
-
-  $('#play').click(function() {
-    if(isMobile.any()) {
-      showButton("Pause");
-    }
-    $('#player').jPlayer('play');
-  });
-
-  $('#pause').click(function() {
-    if(isMobile.any()) {
-      showButton("Play");
-    }
-    $('#player').jPlayer('pause');
-  });
-
-  var image = document.getElementById('background');
-  image.onload = function() {
+function makeItRain() {
+  background.onload = function() {
     var engine = new RainyDay({
       image: this
     });
     engine.rain([ [3, 2, 2] ], 100);
   };
-  image.crossOrigin = 'anonymous';
-});
-
-function showButton(mode) {
-  if(mode === "Play") {
-    $('#play').show();
-    $('#pause').hide();
-  } else if(mode == "Pause") {
-    $('#play').hide();
-    $('#pause').show();
-  } else {
-    $('#play').hide();
-    $('#pause').hide();
-  }
+  background.src = 'assets/images/africa.png';
+  background.crossOrigin = 'anonymous';
 }
 
 var isMobile = {
@@ -68,3 +47,4 @@ var isMobile = {
   Windows: function() { return navigator.userAgent.match(/IEMobile/i); },
   any: function() { return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows()); }
 };
+
