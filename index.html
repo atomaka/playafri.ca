@@ -31,7 +31,7 @@
           $('#pause').hide();
         } else {
           $('#play').hide();
-          $('#pause').hide();
+          $('#pause').show();
         }
         var mediaPlayer = jQuery('#player');
 
@@ -53,18 +53,18 @@
         });
 
         $('#play').click(function() {
-          if(isMobile.any()) {
+          //if(isMobile.any()) {
             $('#play').hide();
             $('#pause').show();
-          }
+          //}
           $('#player').jPlayer('play');
         });
 
         $('#pause').click(function() {
-          if(isMobile.any()) {
+          //if(isMobile.any()) {
             $('#play').show();
             $('#pause').hide();
-          }
+          //}
           $('#player').jPlayer('pause');
         });
 
