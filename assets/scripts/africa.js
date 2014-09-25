@@ -1,14 +1,7 @@
-var playing    = false;
+var sound      = null;
+var playing    = true;
 var control    = document.getElementById('control');
 var background = document.getElementById('background');
-var sound      = new Howl({
-  urls: ['assets/audio/africa.ogg', 'assets/audio/africa.m4a'],
-  autoplay: true,
-  loop: true,
-  onload: function() {
-    setTimeout(makeItPlay, 500);
-  }
-});
 
 function toggle() {
   if(playing) {
@@ -24,6 +17,16 @@ function toggle() {
 
 function load() {
   makeItRain();
+  makeItPlay();
+}
+
+function makeItPlay() {
+  sound = new Howl({
+    urls: ['assets/audio/africa.ogg', 'assets/audio/africa.m4a'],
+    autoplay: true,
+    loop: true
+  });
+  setTimeout(enableToggle, 2500);
 }
 
 function makeItRain() {
@@ -37,9 +40,10 @@ function makeItRain() {
   background.crossOrigin = 'anonymous';
 }
 
-var makeItPlay = function() {
-  if(sound.pos() === 0) {
+var enableToggle = function() {
+  if(0 === sound.pos()) {
     playing                  = false;
+    control.className        = 'icon-play';
     control.style.visibility = 'visible';
   }
 }
