@@ -11,12 +11,9 @@
     <script src="assets/scripts/rainyday.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jplayer/2.7.1/jquery.jplayer/jquery.jplayer.js"></script>
+    <script src="assets/scripts/africa.js"></script>
   </head>
   <body>
-    <!--<audio autoplay="autoplay" loop="loop">
-      <source src="assets/audio/africa.ogg" />
-      <source src="assets/audio/africa.mp3" />
-    </audio>-->
     <img id="background" src="assets/images/africa.png" />
 
     <div id="container">
@@ -24,82 +21,6 @@
       <div id="play" class="button"><i class="icon-play"></i></div>
       <div id="pause" class="button"><i class="icon-pause"></i></div>
     </div>
-
-    <script type="text/javascript">
-      $(document).ready(function() {
-        if(isMobile.any()) {
-          $('#pause').hide();
-        } else {
-          $('#play').hide();
-          $('#pause').show();
-        }
-        var mediaPlayer = jQuery('#player');
-
-        mediaPlayer.jPlayer({
-          //swfPath: '/swf/Jplayer.swf',
-          solution:    "html",//"flash, html",
-          supplied : 'mp3, oga, m4a',
-          cssSelector: {
-            play: '#play',
-          },
-
-          ready: function() {jQuery(this).jPlayer("setMedia", {
-            mp3: 'assets/audio/africa.mp3',
-            oga: 'assets/audio/africa.oga',
-            m4a: 'assets/audio/africa.m4a'
-          }).jPlayer("play");},
-
-          loop: true
-        });
-
-        $('#play').click(function() {
-          //if(isMobile.any()) {
-            $('#play').hide();
-            $('#pause').show();
-          //}
-          $('#player').jPlayer('play');
-        });
-
-        $('#pause').click(function() {
-          //if(isMobile.any()) {
-            $('#play').show();
-            $('#pause').hide();
-          //}
-          $('#player').jPlayer('pause');
-        });
-
-        var image = document.getElementById('background');
-        image.onload = function() {
-          var engine = new RainyDay({
-            image: this
-          });
-          engine.rain([ [3, 2, 2] ], 100);
-        };
-        //image.src = '';
-        image.crossOrigin = 'anonymous';
-      });
-
-      var isMobile = {
-        Android: function() {
-          return navigator.userAgent.match(/Android/i);
-        },
-        BlackBerry: function() {
-          return navigator.userAgent.match(/BlackBerry/i);
-        },
-        iOS: function() {
-          return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-        },
-        Opera: function() {
-          return navigator.userAgent.match(/Opera Mini/i);
-        },
-        Windows: function() {
-          return navigator.userAgent.match(/IEMobile/i);
-        },
-        any: function() {
-          return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-        }
-      };
-    </script>
   </body>
 </html>
 
