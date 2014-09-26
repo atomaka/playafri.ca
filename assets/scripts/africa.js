@@ -7,11 +7,9 @@ function toggle() {
   if(playing) {
     sound.pause();
     playing           = false;
-    control.className = 'icon-play';
   } else {
     sound.play();
     playing           = true;
-    control.className = 'icon-pause';
   }
 }
 
@@ -24,7 +22,10 @@ function makeItPlay() {
   sound = new Howl({
     urls: ['assets/audio/africa.ogg', 'assets/audio/africa.m4a'],
     autoplay: true,
-    loop: true
+    loop: true,
+    onplay: function() {
+      control.style.visibility = 'hidden';
+    }
   });
   setTimeout(enableToggle, 2500);
 }
