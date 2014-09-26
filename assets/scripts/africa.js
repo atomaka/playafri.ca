@@ -1,17 +1,6 @@
 var sound      = null;
-var playing    = true;
-var control    = document.getElementById('control');
+var play       = document.getElementById('play');
 var background = document.getElementById('background');
-
-function toggle() {
-  if(playing) {
-    sound.pause();
-    playing           = false;
-  } else {
-    sound.play();
-    playing           = true;
-  }
-}
 
 function load() {
   makeItRain();
@@ -27,6 +16,7 @@ function makeItPlay() {
       control.style.visibility = 'hidden';
     }
   });
+
   setTimeout(enableToggle, 2500);
 }
 
@@ -37,14 +27,16 @@ function makeItRain() {
     });
     engine.rain([ [3, 2, 2] ], 100);
   };
-  background.src = 'assets/images/africa.png';
+  background.src         = 'assets/images/africa.png';
   background.crossOrigin = 'anonymous';
+}
+
+function play() {
+  sound.play();
 }
 
 var enableToggle = function() {
   if(0 === sound.pos()) {
-    playing                  = false;
-    control.className        = 'icon-play';
-    control.style.visibility = 'visible';
+    play.style.visibility = 'visible';
   }
 }

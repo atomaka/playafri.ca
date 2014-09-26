@@ -15,7 +15,7 @@ html, body, img, #container {
   text-align: center;
 }
 
-#control {
+#play {
   visibility: hidden;
   display: inline-block;
   border-radius: 10px;
