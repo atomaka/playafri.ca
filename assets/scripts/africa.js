@@ -13,7 +13,7 @@ function makeItPlay() {
     autoplay: true,
     loop: true,
     onplay: function() {
-      control.style.visibility = 'hidden';
+      play.style.visibility = 'hidden';
     }
   });
 
@@ -31,7 +31,7 @@ function makeItRain() {
   background.crossOrigin = 'anonymous';
 }
 
-function play() {
+function playSound() {
   sound.play();
 }
 
