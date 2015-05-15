@@ -5,6 +5,10 @@ html, body, img, #container {
   height: 100%;
 }
 
+body {
+  overflow: hidden;
+}
+
 #container {
   position: absolute;
   left: 0px;
